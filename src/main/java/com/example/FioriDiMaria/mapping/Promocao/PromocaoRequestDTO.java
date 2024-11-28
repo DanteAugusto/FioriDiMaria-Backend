@@ -1,4 +1,4 @@
-package com.example.FioriDiMaria.Promocao;
+package com.example.FioriDiMaria.mapping.Promocao;
 
 import java.time.LocalDate;
 
