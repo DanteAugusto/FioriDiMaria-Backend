@@ -1,5 +1,9 @@
-package com.example.FioriDiMaria.artigo;
+package com.example.FioriDiMaria.service;
 
+import com.example.FioriDiMaria.model.Artigo;
+import com.example.FioriDiMaria.mapper.artigo.ArtigoRequestDTO;
+import com.example.FioriDiMaria.mapper.artigo.ArtigoResponseDTO;
+import com.example.FioriDiMaria.repository.ArtigoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

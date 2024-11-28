@@ -1,5 +1,6 @@
-package com.example.FioriDiMaria.artigo;
+package com.example.FioriDiMaria.model;
 
+import com.example.FioriDiMaria.mapper.artigo.ArtigoRequestDTO;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
