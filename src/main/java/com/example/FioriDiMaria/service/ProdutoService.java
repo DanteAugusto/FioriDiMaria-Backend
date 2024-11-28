@@ -1,9 +1,12 @@
-package com.example.FioriDiMaria.produto;
+package com.example.FioriDiMaria.service;
 
+import com.example.FioriDiMaria.model.Produto;
+import com.example.FioriDiMaria.repository.ProdutoRepository;
+import com.example.FioriDiMaria.mapper.produto.ProdutoRequestDTO;
+import com.example.FioriDiMaria.mapper.produto.ProdutoResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

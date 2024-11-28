@@ -1,8 +1,8 @@
 package com.example.FioriDiMaria.controllers;
 
-import com.example.FioriDiMaria.produto.ProdutoRequestDTO;
-import com.example.FioriDiMaria.produto.ProdutoResponseDTO;
-import com.example.FioriDiMaria.produto.ProdutoService;
+import com.example.FioriDiMaria.mapper.produto.ProdutoRequestDTO;
+import com.example.FioriDiMaria.mapper.produto.ProdutoResponseDTO;
+import com.example.FioriDiMaria.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
