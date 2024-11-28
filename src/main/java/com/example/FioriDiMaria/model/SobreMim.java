@@ -1,5 +1,6 @@
-package com.example.FioriDiMaria.sobreMim;
+package com.example.FioriDiMaria.model;
 
+import com.example.FioriDiMaria.mapper.sobreMim.SobreMimRequestDTO;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

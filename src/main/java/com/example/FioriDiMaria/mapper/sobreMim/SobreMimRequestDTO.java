@@ -1,4 +1,4 @@
-package com.example.FioriDiMaria.sobreMim;
+package com.example.FioriDiMaria.mapper.sobreMim;
 
 public record SobreMimRequestDTO(String texto) {
 }

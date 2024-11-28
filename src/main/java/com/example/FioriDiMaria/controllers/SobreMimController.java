@@ -1,8 +1,8 @@
 package com.example.FioriDiMaria.controllers;
 
-import com.example.FioriDiMaria.sobreMim.SobreMimRequestDTO;
-import com.example.FioriDiMaria.sobreMim.SobreMimResponseDTO;
-import com.example.FioriDiMaria.sobreMim.SobreMimService;
+import com.example.FioriDiMaria.mapper.sobreMim.SobreMimRequestDTO;
+import com.example.FioriDiMaria.mapper.sobreMim.SobreMimResponseDTO;
+import com.example.FioriDiMaria.service.SobreMimService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,17 +20,17 @@ public class SobreMimController {
     }
 
     @PostMapping
-    public void NewSobreMim(@RequestBody SobreMimRequestDTO sobreMim){
+    public void newSobreMim(@RequestBody SobreMimRequestDTO sobreMim){
         sobreMimService.saveNew(sobreMim);
     }
 
     @PutMapping("/{id}")
-    public void UpdateSobreMim(@PathVariable int id, @RequestBody SobreMimRequestDTO sobreMim){
+    public void updateSobreMim(@PathVariable int id, @RequestBody SobreMimRequestDTO sobreMim){
         sobreMimService.update(id, sobreMim);
     }
 
     @DeleteMapping("/{id}")
-    public void DeleteSobreMim(@PathVariable int id){
+    public void deleteSobreMim(@PathVariable int id){
         sobreMimService.delete(id);
     }
 }

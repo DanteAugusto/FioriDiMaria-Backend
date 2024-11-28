@@ -1,5 +1,9 @@
-package com.example.FioriDiMaria.sobreMim;
+package com.example.FioriDiMaria.service;
 
+import com.example.FioriDiMaria.model.SobreMim;
+import com.example.FioriDiMaria.repository.SobreMimRepository;
+import com.example.FioriDiMaria.mapper.sobreMim.SobreMimRequestDTO;
+import com.example.FioriDiMaria.mapper.sobreMim.SobreMimResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
