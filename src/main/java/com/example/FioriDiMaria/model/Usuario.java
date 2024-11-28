@@ -1,5 +1,7 @@
-package com.example.FioriDiMaria.usuario;
+package com.example.FioriDiMaria.model;
 
+import com.example.FioriDiMaria.model.enums.UserRole;
+import com.example.FioriDiMaria.mapper.usuario.UsuarioRequestDTO;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

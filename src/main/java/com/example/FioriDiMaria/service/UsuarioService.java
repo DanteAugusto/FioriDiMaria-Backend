@@ -1,5 +1,9 @@
-package com.example.FioriDiMaria.usuario;
+package com.example.FioriDiMaria.service;
 
+import com.example.FioriDiMaria.model.Usuario;
+import com.example.FioriDiMaria.repository.UsuarioRepository;
+import com.example.FioriDiMaria.mapper.usuario.UsuarioRequestDTO;
+import com.example.FioriDiMaria.mapper.usuario.UsuarioResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

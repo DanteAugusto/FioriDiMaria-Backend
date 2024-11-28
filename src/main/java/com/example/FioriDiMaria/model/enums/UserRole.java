@@ -1,4 +1,4 @@
-package com.example.FioriDiMaria.usuario;
+package com.example.FioriDiMaria.model.enums;
 
 public enum UserRole {
     ADMIN("admin"),
