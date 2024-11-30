@@ -2,8 +2,8 @@ package com.example.FioriDiMaria.service;
 
 import com.example.FioriDiMaria.model.Promocao;
 import com.example.FioriDiMaria.repository.PromocaoRepository;
-import com.example.FioriDiMaria.mapping.Promocao.PromocaoRequestDTO;
-import com.example.FioriDiMaria.mapping.Promocao.PromocaoResponseDTO;
+import com.example.FioriDiMaria.mapper.Promocao.PromocaoRequestDTO;
+import com.example.FioriDiMaria.mapper.Promocao.PromocaoResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

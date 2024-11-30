@@ -2,6 +2,8 @@ package com.example.FioriDiMaria.controller;
 
 import java.util.List;
 
+import com.example.FioriDiMaria.mapper.venda.VendaResponseDTO;
+import com.example.FioriDiMaria.mapper.venda.VendaResquestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.FioriDiMaria.mapper.venda.VendaCreate;
-import com.example.FioriDiMaria.mapper.venda.VendaMapper;
-import com.example.FioriDiMaria.mapper.venda.VendaOutput;
-import com.example.FioriDiMaria.mapper.venda.VendaUpdate;
+
 import com.example.FioriDiMaria.model.Venda;
 import com.example.FioriDiMaria.service.VendaService;
 
@@ -28,51 +27,34 @@ public class VendaController {
     @Autowired
     private VendaService vendaService;
 
-    @Autowired
-    private VendaMapper vendaMapper;
-
     @PostMapping
-    public ResponseEntity<VendaOutput> create(@RequestBody VendaCreate vendaCreate){
-        Venda venda = vendaMapper.toVendaFromCreate(vendaCreate);
-        Venda vendaCriado = vendaService.create(venda);
-        VendaOutput vendaOutput = vendaMapper.toVendaOutput(vendaCriado);
-        return new ResponseEntity<VendaOutput>(vendaOutput, HttpStatus.CREATED);
+    public ResponseEntity<VendaResponseDTO> create(@RequestBody VendaResquestDTO venda){
+        return new ResponseEntity<>(vendaService.create(venda), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<VendaOutput> getById(@PathVariable Long id){
-        Venda venda = vendaService.getById(id);
-        VendaOutput vendaOutput = vendaMapper.toVendaOutput(venda);
-        return new ResponseEntity<VendaOutput>(vendaOutput, HttpStatus.OK);
+    public ResponseEntity<VendaResponseDTO> getById(@PathVariable Long id){
+        return new ResponseEntity<>(vendaService.getById(id), HttpStatus.OK);
     }
 
     @GetMapping
-    public ResponseEntity<List<VendaOutput>> getAll(){
-        List<Venda> vendas = vendaService.getAll();
-        List<VendaOutput> vendasOutput = vendas
-                                            .stream()
-                                            .map(vendaMapper::toVendaOutput)
-                                            .toList();
-        return new ResponseEntity<List<VendaOutput>>(vendasOutput, HttpStatus.OK);                                                                                   
+    public ResponseEntity<List<VendaResponseDTO>> getAll(){
+        return new ResponseEntity<>(vendaService.getAll(), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<VendaOutput> update(@PathVariable Long id, @RequestBody VendaUpdate vendaUpdate){
-        Venda venda = vendaMapper.toVendaFromUpdate(vendaUpdate);
-        Venda vendaAtualizado = vendaService.update(id, venda);
-        VendaOutput vendaOutput = vendaMapper.toVendaOutput(venda);
-        return new ResponseEntity<VendaOutput>(vendaOutput, HttpStatus.OK);
+    public ResponseEntity<VendaResponseDTO> update(@PathVariable Long id, @RequestBody VendaResquestDTO vendaUpdate){
+        return new ResponseEntity<>(vendaService.update(id,vendaUpdate), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable Long id){
-        vendaService.delete(id);
-        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+        return new ResponseEntity<>(vendaService.delete(id), HttpStatus.OK);
     }
 
     @DeleteMapping
     public ResponseEntity<Boolean> deleteAll(){
         vendaService.deleteAll();
-        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 }

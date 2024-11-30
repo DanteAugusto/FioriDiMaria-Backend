@@ -1,4 +1,4 @@
-package com.example.FioriDiMaria.mapping.Promocao;
+package com.example.FioriDiMaria.mapper.Promocao;
 
 import com.example.FioriDiMaria.model.Promocao;
 

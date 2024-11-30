@@ -1,4 +1,4 @@
-package com.example.FioriDiMaria.controllers;
+package com.example.FioriDiMaria.controller;
 
 import com.example.FioriDiMaria.mapper.artigo.ArtigoRequestDTO;
 import com.example.FioriDiMaria.mapper.artigo.ArtigoResponseDTO;

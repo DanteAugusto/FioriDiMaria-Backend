@@ -1,7 +1,10 @@
 package com.example.FioriDiMaria.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.example.FioriDiMaria.mapper.venda.VendaResponseDTO;
+import com.example.FioriDiMaria.mapper.venda.VendaResquestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,28 +17,39 @@ public class VendaService {
     @Autowired
     private VendaRepository vendaRepository;
 
-    public Venda create(Venda venda) {
-        return vendaRepository.save(venda);
+    public VendaResponseDTO create(VendaResquestDTO dto) {
+        Venda newVenda = new Venda(dto);
+        vendaRepository.save(newVenda);
+        return new VendaResponseDTO(newVenda);
     }
 
-    public Venda getById(Long id) {
-        return vendaRepository.findById(id).orElse(null);
+    public VendaResponseDTO getById(Long id) {
+        return vendaRepository.findById(id).map(VendaResponseDTO::new).orElse(null);
     }
 
-    public List<Venda> getAll() {
-        return vendaRepository.findAll();
+    public List<VendaResponseDTO> getAll() {
+        return vendaRepository.findAll().stream().map(VendaResponseDTO::new).toList();
     }
 
-    public Venda update(Long id, Venda venda) {
-        Venda vendaExistente = this.getById(id);
+    public VendaResponseDTO update(Long id, VendaResquestDTO dto) {
+        Optional<Venda> tryVenda = vendaRepository.findById(id);
+        if(tryVenda.isEmpty()){
+            return null;
+        }
+        Venda venda = tryVenda.get();
 
-        vendaExistente.setData(venda.getData());
-
-        return vendaRepository.save(vendaExistente);
+        venda.setUserId(dto.userId());
+        venda.setDate(dto.data());
+        venda.setStatus(dto.status());
+        vendaRepository.save(venda);
+        return new VendaResponseDTO(venda);
     }
 
-    public void delete(Long id) {
-        vendaRepository.deleteById(id);
+    public boolean delete(Long id) {
+        Optional<Venda> tryVenda = vendaRepository.findById(id);
+        if(tryVenda.isEmpty()) return false;
+        vendaRepository.delete(tryVenda.get());
+        return true;
     }
 
     public void deleteAll() {
