@@ -1,6 +1,6 @@
 package com.example.FioriDiMaria.model;
 
-import com.example.FioriDiMaria.mapping.Promocao.PromocaoRequestDTO;
+import com.example.FioriDiMaria.mapper.Promocao.PromocaoRequestDTO;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

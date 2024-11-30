@@ -1,4 +1,4 @@
-package com.example.FioriDiMaria.controllers;
+package com.example.FioriDiMaria.controller;
 
 import com.example.FioriDiMaria.mapper.produto.ProdutoRequestDTO;
 import com.example.FioriDiMaria.mapper.produto.ProdutoResponseDTO;
