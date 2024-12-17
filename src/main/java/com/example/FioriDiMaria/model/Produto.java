@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Table(name = "produtos")
 @Entity(name = "produtos")
 @Getter
@@ -20,6 +23,9 @@ public class Produto {
     private double preco;
     private String descricao;
     private String foto;
+
+    @ManyToMany(mappedBy = "produtos")
+    private Set<Tag> students = new HashSet<>();
 
     public Produto(ProdutoRequestDTO produtoRequestDTO) {
         this.nome = produtoRequestDTO.nome();;
