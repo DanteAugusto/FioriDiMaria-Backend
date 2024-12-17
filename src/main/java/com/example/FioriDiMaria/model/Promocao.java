@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "promocoes")
 @Entity(name = "promocoes")
@@ -23,6 +25,9 @@ public class Promocao {
     private LocalDate dataFim;
     private Integer descontoPercentual;
     private String nome;
+
+    @OneToMany(mappedBy="promocao")
+    private List<VendaIndividual> vendas = new ArrayList<>();
 
     public Promocao(PromocaoRequestDTO dto) {
         this.dataInicio = dto.dataInicio();
