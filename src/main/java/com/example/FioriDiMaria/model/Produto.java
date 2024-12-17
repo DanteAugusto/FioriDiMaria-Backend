@@ -7,7 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Table(name = "produtos")
@@ -26,6 +28,9 @@ public class Produto {
 
     @ManyToMany(mappedBy = "produtos")
     private Set<Tag> students = new HashSet<>();
+
+    @OneToMany(mappedBy="produto")
+    private List<VendaIndividual> vendas = new ArrayList<>();
 
     public Produto(ProdutoRequestDTO produtoRequestDTO) {
         this.nome = produtoRequestDTO.nome();;

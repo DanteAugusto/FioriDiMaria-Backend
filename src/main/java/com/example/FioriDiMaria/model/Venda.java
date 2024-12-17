@@ -1,7 +1,9 @@
 package com.example.FioriDiMaria.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.example.FioriDiMaria.mapper.venda.VendaResquestDTO;
 import com.example.FioriDiMaria.model.enums.StatusVenda;
@@ -27,6 +29,9 @@ public class Venda {
 
     @ManyToOne
     private Usuario usuario;
+
+    @OneToMany(mappedBy="venda")
+    private List<VendaIndividual> vendas = new ArrayList<>();
 
     public Venda(VendaResquestDTO dto) {
         this.userId = dto.userId();
