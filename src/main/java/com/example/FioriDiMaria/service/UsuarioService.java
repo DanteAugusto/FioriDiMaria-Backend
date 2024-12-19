@@ -51,4 +51,8 @@ public class UsuarioService {
         return true;
     }
 
+    public Usuario getUser(long id) {
+        return usuarioRepository.findById(id).get();
+    }
+
 }

@@ -28,7 +28,7 @@ public class Venda {
     private StatusVenda status;
 
     @ManyToOne
-    private Usuario usuario;
+    private Endereco endereco;
 
     @OneToMany(mappedBy="venda")
     private List<VendaIndividual> vendas = new ArrayList<>();
