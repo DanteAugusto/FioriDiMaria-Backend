@@ -27,10 +27,13 @@ public class Produto {
     private String foto;
 
     @ManyToMany(mappedBy = "produtos")
-    private Set<Tag> students = new HashSet<>();
+    private Set<Tag> tags = new HashSet<>();
 
     @OneToMany(mappedBy="produto")
     private List<VendaIndividual> vendas = new ArrayList<>();
+
+    @OneToMany(mappedBy="produto")
+    private List<Promocao> promocoes = new ArrayList<>();
 
     public Produto(ProdutoRequestDTO produtoRequestDTO) {
         this.nome = produtoRequestDTO.nome();;

@@ -26,10 +26,12 @@ public class EnderecoService {
         return enderecoRepository.findById(id).map(EnderecoResponseDTO::new).orElse(null);
     }
 
-    public void saveNew(EnderecoRequestDTO dto, Long userId) {
-        Usuario ususario = usuarioService.getUser(userId);
-        Endereco endereco = new Endereco(dto, ususario);
+    public boolean saveNew(EnderecoRequestDTO dto, Long userId) {
+        Usuario usuario = usuarioService.getUser(userId);
+        if(usuario == null) return false;
+        Endereco endereco = new Endereco(dto, usuario);
         enderecoRepository.save(endereco);
+        return true;
     }
 
     public boolean update(long id, EnderecoRequestDTO dto) {
@@ -56,5 +58,9 @@ public class EnderecoService {
         if (tryEndereco.isEmpty()) return false;
         enderecoRepository.delete(tryEndereco.get());
         return true;
+    }
+
+    public Endereco getEndereco(long id) {
+        return enderecoRepository.findById(id).orElse(null);
     }
 }

@@ -23,18 +23,17 @@ import org.hibernate.type.descriptor.DateTimeUtils;
 public class Venda {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long userId;
     private LocalDate date;
     private StatusVenda status;
 
     @ManyToOne
     private Endereco endereco;
 
-    @OneToMany(mappedBy="venda")
+    @OneToMany(mappedBy="venda", cascade = CascadeType.PERSIST)
     private List<VendaIndividual> vendas = new ArrayList<>();
 
-    public Venda(VendaResquestDTO dto) {
-        this.userId = dto.userId();
+    public Venda(VendaResquestDTO dto, Endereco endereco) {
+        this.endereco = endereco;
         this.date = dto.data();
         this.status = dto.status();
     }
