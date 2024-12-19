@@ -36,14 +36,14 @@ public class Usuario {
     private String senha;
     private TipoUsuario tipo;
 
+    @OneToMany(mappedBy="usuario")
+    private List<Endereco> enderecos = new ArrayList<>();
+
     public Usuario(UsuarioRequestDTO usuarioRequestDTO) {
         this.nome = usuarioRequestDTO.nome();
         this.email = usuarioRequestDTO.email();
         this.senha = usuarioRequestDTO.senha();
         this.tipo = usuarioRequestDTO.tipo();
     }
-
-    @OneToMany(mappedBy="usuario")
-    private List<Venda> vendas = new ArrayList<>();
 
 }
