@@ -1,5 +1,6 @@
 package com.example.FioriDiMaria.model;
 
+import com.example.FioriDiMaria.mapper.vendaIndividual.VendaIndividualRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,9 +17,9 @@ public class VendaIndividual {
     private Long id;
     private int quantidade;
     private BigDecimal precoUnitario;
-    private String descricao;
 
-    @ManyToOne
+    @ManyToOne(optional = true)
+    @JoinColumn(nullable = true)
     private Promocao promocao;
 
     @ManyToOne
@@ -26,31 +27,29 @@ public class VendaIndividual {
 
     @ManyToOne
     private Venda venda;
+
+    public VendaIndividual (
+            VendaIndividualRequestDTO dto,
+            Promocao promocao,
+            Produto produto,
+            Venda venda) {
+        this.quantidade = dto.quantidade();
+        this.precoUnitario = dto.precoUnitario();
+        this.promocao = promocao;
+        this.produto = produto;
+        this.venda = venda;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "{ id: " + this.id +
+                ", quantidade: " + this.quantidade +
+                ", precoUnitario: " + this.precoUnitario +
+                ", id_promocao: " + (this.promocao == null ? "null" : this.promocao.getId()) +
+                ", id_produto: " + this.produto.getId() +
+                ", id_venda: " + this.venda.getId() +
+                "}";
+    }
 }
-
-//@OneToMany(mappedBy="usuario")
-//    private List<Venda> vendas = new ArrayList<>();
-
-
-//@Entity(name = "vendas")
-//@Table(name = "vendas")
-//@Setter
-//@Getter
-//@NoArgsConstructor
-//@AllArgsConstructor
-//public class Venda {
-//    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
-//    private Long userId;
-//    private LocalDate date;
-//    private StatusVenda status;
-//
-//    @ManyToOne
-//    private Usuario usuario;
-//
-//    public Venda(VendaResquestDTO dto) {
-//        this.userId = dto.userId();
-//        this.date = dto.data();
-//        this.status = dto.status();
-//    }
-//}

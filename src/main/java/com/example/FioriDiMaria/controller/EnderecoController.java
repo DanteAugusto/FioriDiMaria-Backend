@@ -20,8 +20,8 @@ public class EnderecoController {
     }
 
     @PostMapping("/{userId}")
-    public void newEndereco(@RequestBody EnderecoRequestDTO endereco, @PathVariable Long userId){
-        service.saveNew(endereco, userId);
+    public boolean newEndereco(@RequestBody EnderecoRequestDTO endereco, @PathVariable Long userId){
+        return service.saveNew(endereco, userId);
     }
 
     @PutMapping("/{id}")

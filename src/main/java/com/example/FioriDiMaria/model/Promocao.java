@@ -29,6 +29,9 @@ public class Promocao {
     @OneToMany(mappedBy="promocao")
     private List<VendaIndividual> vendas = new ArrayList<>();
 
+    @ManyToOne
+    private Produto produto;
+
     public Promocao(PromocaoRequestDTO dto) {
         this.dataInicio = dto.dataInicio();
         this.dataFim = dto.dataFim();

@@ -27,9 +27,11 @@ public class VendaController {
     @Autowired
     private VendaService vendaService;
 
-    @PostMapping
-    public ResponseEntity<VendaResponseDTO> create(@RequestBody VendaResquestDTO venda){
-        return new ResponseEntity<>(vendaService.create(venda), HttpStatus.OK);
+    @PostMapping("/{idEndereco}")
+    public ResponseEntity<VendaResponseDTO> create(@RequestBody VendaResquestDTO venda, @PathVariable Long idEndereco) {
+        VendaResponseDTO dto = vendaService.create(venda, idEndereco);
+        if (dto == null) return new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
