@@ -37,6 +37,7 @@ public class TagService {
         Tag tag = tryTag.get();
 
         tag.setNome(dto.nome());
+        tagRepository.save(tag);
         return true;
     }
 

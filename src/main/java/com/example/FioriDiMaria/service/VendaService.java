@@ -34,15 +34,12 @@ public class VendaService {
         Venda newVenda = new Venda(dto, endereco);
         List<VendaIndividual> vendasIndividuais = dto.vendasIndividuais().stream()
                 .map(vi -> vendaIndividualService.makeNew(vi, newVenda)).toList();
-        System.out.println(vendasIndividuais.size());
-        System.out.println(vendasIndividuais.getFirst());
         if(vendasIndividuais.stream().anyMatch(Objects::isNull)){
             return null;
         }
         newVenda.setVendas(vendasIndividuais);
         vendaRepository.save(newVenda);
 
-        System.out.println(newVenda.getVendas().getFirst());
         return new VendaResponseDTO(newVenda, vendaIndividualService.findFromVenda(newVenda.getId()));
     }
 

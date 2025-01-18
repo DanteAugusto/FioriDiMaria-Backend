@@ -36,7 +36,7 @@ public class Usuario {
     private String senha;
     private TipoUsuario tipo;
 
-    @OneToMany(mappedBy="usuario")
+    @OneToMany(mappedBy="usuario", cascade = CascadeType.ALL)
     private List<Endereco> enderecos = new ArrayList<>();
 
     public Usuario(UsuarioRequestDTO usuarioRequestDTO) {

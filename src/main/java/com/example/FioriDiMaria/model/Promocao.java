@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class Promocao {
     private Long idProduto;
     private LocalDate dataInicio;
     private LocalDate dataFim;
-    private Integer descontoPercentual;
+    private BigDecimal descontoPercentual;
     private String nome;
 
     @OneToMany(mappedBy="promocao")
